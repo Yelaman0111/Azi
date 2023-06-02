@@ -1,0 +1,17 @@
+version: '3'
+services:
+  # web:
+  #   image: docker-node-mongo
+  #   build: .
+  #   command: "node app.js"
+  #   ports:
+  #     - "3000:3000"
+  #   depends_on:
+  #     - "mongo"
+  mongo:
+    image: "mongo"
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: "admin"
+      MONGO_INITDB_ROOT_PASSWORD: "0987346519"
