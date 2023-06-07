@@ -37,6 +37,7 @@ class authController {
         username,
         password: hashPassword,
         roles: [userRole.value],
+        balance: 0,
       });
       user.save();
 
@@ -75,6 +76,16 @@ class authController {
         const users = await User.find();
 
       res.json(users);
+    } catch (e) {}
+  }
+
+  async getMe(req, res, next) {
+    try {
+      console.log(req.user);
+        const user = await User.findById(req.user.id);
+        console.log(user);
+
+      res.json(user);
     } catch (e) {}
   }
 }

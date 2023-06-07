@@ -6,10 +6,9 @@ const RoomSchema = new Schema(
   {
     players: {
       type: [{ type: Schema.Types.ObjectId, ref: "User" }],
-      validate: [playersLimit, "{PATH} exceeds the limit of 10"],
+      validate: [playersLimit, "{PATH} exceeds the limit of 6"],
     },
     place: { type: Schema.Types.ObjectId, ref: "Place" },
- 
   },
   { timestamps: true }
 );
