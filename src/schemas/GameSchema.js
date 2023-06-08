@@ -2,7 +2,7 @@ const { Schema, model } = require("mongoose");
 
 const GameSchema = new Schema(
   {
-    players: [{ type: Schema.Types.ObjectId, ref: "User" }],
+    players: [{ type: Schema.Types.ObjectId, ref: "User" }],// игроки
     hands: [[{ type: String }]],// раздача, у кого какие карты
     status: { type: Number, require: true }, // 1 - в процессе 2-завершена
     trumpCard: { type: String },// козырь - должна быть карта
@@ -12,6 +12,7 @@ const GameSchema = new Schema(
     firstMove: [{ type: String }],// первый ход
     secondMove: [{ type: String }],// второй ход
     thirdMove: [{ type: String }],// третий ход
+    firstToMove: { type: Schema.Types.ObjectId, ref: "User" }, //чей первый ход
     winner: { type: Schema.Types.ObjectId, ref: "User" }, // победитель
     room: { type: Schema.Types.ObjectId, ref: "Room" }, // комната к которой связана игра
   },
@@ -19,3 +20,12 @@ const GameSchema = new Schema(
 );
 
 module.exports = model("Game", GameSchema);
+
+
+// {
+//   playerId: 1,
+//   hand: [1,2,3],
+//   temka: 0,
+//   stavka: 100,
+
+// }

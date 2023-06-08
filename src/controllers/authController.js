@@ -83,7 +83,7 @@ class authController {
     try {
       console.log(req.user);
         const user = await User.findById(req.user.id);
-        console.log(user);
+        // console.log(user);
 
       res.json(user);
     } catch (e) {}
