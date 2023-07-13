@@ -13,6 +13,9 @@ const GameSchema = new Schema(
     secondMove: [{ type: String }],// второй ход
     thirdMove: [{ type: String }],// третий ход
     firstToMove: { type: Schema.Types.ObjectId, ref: "User" }, //чей первый ход
+    winnerFirst: { type: Schema.Types.ObjectId, ref: "User" }, // победитель первой раздачи
+    winnerSecond: { type: Schema.Types.ObjectId, ref: "User" }, // победитель второй раздачи
+    winnerTherd: { type: Schema.Types.ObjectId, ref: "User" }, // победитель третей раздачи
     winner: { type: Schema.Types.ObjectId, ref: "User" }, // победитель
     room: { type: Schema.Types.ObjectId, ref: "Room" }, // комната к которой связана игра
   },

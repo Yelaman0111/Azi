@@ -12,13 +12,13 @@ const generateAccessToken = (id, roles) => {
     roles,
   };
 
-  return jwt.sign(payload, secret, { expiresIn: "24h" });
+  return jwt.sign(payload, secret);
 };
 
 class authController {
   async registration(req, res, next) {
     try {
-      const errors = validationResult(req);
+      const errors =  validationResult(req);
 
       if (!errors.isEmpty()) {
         return res.status(400).json({ message: "Registration error", errors });
@@ -27,6 +27,7 @@ class authController {
       const { username, password } = req.body;
       const candidate = await User.findOne({ username });
 
+      
       if (candidate) {
         return res.status(400).json({ message: "User exists" });
       }
@@ -44,7 +45,7 @@ class authController {
       return res.json({ messge: "User registered", user: user });
     } catch (e) {
       console.log(e);
-      req.status(400).json({ message: "Registration error" });
+      res.status(400).json({ message: "Registration error" });
     }
   }
 

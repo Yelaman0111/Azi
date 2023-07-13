@@ -9,7 +9,7 @@ class Deck {
   }
 
   getHands(playersCount) {
-    const hands = [1, 2, 3];
+    const hands = [];
     playersCount.forEach(() => {
       const hand = [];
       for (let j = 0; j < 3; j++) {
